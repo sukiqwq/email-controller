@@ -25,10 +25,10 @@ screenshot.save('ref_other.png')
 
 # 生成ref_email.txt
 # 正文内容
-content = "TeamViewer启动命令执行完成..."
+content = "TeamViewer launched..."
 
 # 创建并写入文件
 with open("ref_email.txt", "w") as file:
     file.write(content)
 
-print("文件 ref_email.txt 已成功创建并写入内容。")
+print("ref_email.txt created successfully!")

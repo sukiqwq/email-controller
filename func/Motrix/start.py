@@ -4,7 +4,7 @@ import time
 from xmlrpc import client
 subprocess.Popen("./Motrix.exe")
 if len(sys.argv) < 2 or sys.argv[1] in ('-h', '--help') or len(sys.argv) > 4:
-    print("使用方法: python start.py [下载链接] [文件名] [下载位置]")
+    print("Usage: python start.py [下载链接] [文件名] [下载位置]")
     sys.exit(1)
 
 # 命令行参数
@@ -26,16 +26,16 @@ while attempts < max_attempts:
         s.aria2.addUri('token:' + rpc_token, [video_url], dict(out=output_name))
         # 如果成功，写入成功消息到ref_email.txt并退出循环
         with open("ref_email.txt", "w") as file:
-            file.write("下载任务已添加成功")
-        print("下载任务已添加成功")
+            file.write("download task added successfully")
+        print("download task added successfully!")
         break
     except Exception as e:
-        print(f"下载任务添加失败，正在重试...（{attempts + 1}/{max_attempts}）")
+        print(f"fail in download task adding, try again...（{attempts + 1}/{max_attempts}）")
         attempts += 1
         time.sleep(5)  # 等待1秒后重试
 
 # 如果达到最大尝试次数仍然失败，则写入失败消息到ref_email.txt
 if attempts == max_attempts:
     with open("ref_email.txt", "w") as file:
-        file.write("下载任务添加失败")
-    print("下载任务添加失败，已达到最大尝试次数。")
+        file.write("download task adding failed, max attempts reached.")
+    print("download task adding failed, max attempts reached.")
