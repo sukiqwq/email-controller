@@ -90,8 +90,9 @@ def show_login_window():
             core_script.write_config(config_data)
             messagebox.showinfo('Info', 'Logged in successfully.')
             root.destroy()
-            start_core_script()
             create_tray_icon()
+            start_core_script()
+
         else:
             messagebox.showerror('Error', 'Login failed.')
 
@@ -111,10 +112,10 @@ def main():
     config = core_script.read_config()
     if config and login_imap(config['imap_host'], config['email'], config['password']):
         print("login success")
-        start_tray_icon_in_thread()  # 使用线程启动托盘图标
-        start_core_script()
     else:
         show_login_window()
+    start_tray_icon_in_thread()
+    start_core_script()
 
 
 if __name__ == '__main__':

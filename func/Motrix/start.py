@@ -2,9 +2,10 @@ import subprocess
 import sys
 import time
 from xmlrpc import client
+
 subprocess.Popen("./Motrix.exe")
 if len(sys.argv) < 2 or sys.argv[1] in ('-h', '--help') or len(sys.argv) > 4:
-    print("Usage: python start.py [下载链接] [文件名] [下载位置]")
+    print("Usage: python start.py [url] [file-name] [download-path]")
     sys.exit(1)
 
 # 命令行参数

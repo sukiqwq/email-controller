@@ -1,2 +1,4 @@
-/general.conf
+build
+dist
+main.spec
 general.conf
